@@ -1,4 +1,6 @@
 /* Custom Stylesheet */
+
+
 /**
  * Use this file to override Materialize files so you can update
  * the core Materialize files in the future
@@ -6,31 +8,63 @@
  * Made By MaterializeCSS.com
  */
 
-body{
- background-color: #00BCD4;
+body {
+	background-color: #00BCD4;
 }
-.content{
+
+#dropdown1>li a {
+	height: 63px;
+	display: block;
+}
+
+.content {
 	margin-bottom: 0;
 }
+
 .icon-block {
-  padding: 0 15px;
+	padding: 0 15px;
 }
+
 .icon-block .material-icons {
 	font-size: inherit;
 }
-.nav2 div{
-	display: block;
-	margin-top: 10px;
-}
+
 .guide {
 	background-color: black;
 }
-.nav2{
-	height:480px;
+
+.nav2 {
+	height: 688px;
 }
-.nav2>div>ul{
-	display:none;
+
+.collapsible-header:nth-child(0) {
+	margin-top: 20px;
 }
-.nav2>div:hover>ul{
-	display:block
+
+.collapsible-header {
+	height: 60px;
+}
+
+.collapsible-body>ul li {
+	padding-top: 20px;
+	text-align: center;
+	height: 60px;
+}
+
+.collapsible-header:hover {
+	background-color: #dddddd;
+}
+
+.collapsible-body>ul li:hover {
+	background-color: #dddddd;
+}
+
+.window {
+	display: none;
+	position: absolute;
+	top: 190px;
+	left: 565px;
+	width: 500px;
+	height: 500px;
+	background-color: white;
 }
