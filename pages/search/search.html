@@ -10,6 +10,7 @@
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<link href="../../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
 		<link href="../../css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+		<script src="../../js/echarts .js"></script>
 	</head>
 
 	<body>
@@ -164,43 +165,154 @@
 				</div>
 				<!--另起一行-->
 				<div class="row">
-					<!-- Modal Trigger -->
-					<a class="modal-trigger waves-effect waves-light btn" href="#modal1" onclick="open_modal()">Modal</a>
-					<!-- Modal Structure -->
-					<div id="modal1" class="modal modal-fixed-footer">
-						<div class="modal-content">
-							<h4>Modal Header</h4>
-							<p>A bunch of text</p>
-						</div>
-						<div class="modal-footer">
-							<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">同意</a>
-						</div>
+					<div id="box1" class="col s6" style="height:200px"></div>
+					<div id="box2" class="col s6" style="height:200px">
 					</div>
-		<div class="window">
-				<div>
-					<input type="text" />
 				</div>
-				<div>
-					<input type="text" />
+				<div class="row">
+					<div id="box3" class="col s6" style="height:200px"></div>
+					<div id="box4" class="col s6" style="height:200px">
+					</div>
 				</div>
-				<div>
-					<input type="text" />
-				</div>
-		</div>
-				</div>
-				  <div class="carousel">
-    <a class="carousel-item" href="#one!"><img src="../../images/1.jpg"></a>
-    <a class="carousel-item" href="#two!"><img src="../../images/2.jpg"></a>
-    <a class="carousel-item" href="#three!"><img src="../../images/3.jpg"></a>
-    <a class="carousel-item" href="#four!"><img src="../../images/4.jpg"></a>
-    <a class="carousel-item" href="#five!"><img src="../../images/5.jpg"></a>
-  </div>
 			</div>
-			<!--row end-->
+
+		</div>
+		<!--row end-->
 		</div>
 		<!-- Modal Trigger -->
-<script type="text/javascript" src="../../js/requirejs/require.debug.js"></script>
-    <script type="text/javascript" src="../../config/config.js"></script>
-    <script type="text/javascript" src="./search.js"></script>		
+		<script type="text/javascript" src="../../js/requirejs/require.debug.js"></script>
+		<script type="text/javascript" src="../../config/config.js"></script>
+		<script type="text/javascript" src="./search.js"></script>
 	</body>
+	<script type="text/javascript">
+		var myChart1 = echarts.init(document.getElementById('box1'));
+		var myChart2 = echarts.init(document.getElementById('box2'));
+		var myChart3 = echarts.init(document.getElementById('box3'));
+		var myChart4 = echarts.init(document.getElementById('box4'));
+		var option1 = {
+			title: {
+				text: 'HH'
+			},
+			tooltip: {},
+			legend: {
+				data: ['销量']
+			},
+			xAxis: {
+				data: ["A", "B", "C", "D", "E", "F"]
+			},
+			yAxis: {},
+			series: [{
+				name: '销量',
+				type: 'bar',
+				data: [5, 20, 36, 10, 10, 20]
+			}]
+		};
+	
+		myChart2.setOption({
+			series: [{
+				name: '访问来源',
+				type: 'pie',
+				radius: '55%',
+				data: [
+					{ value: 400, name: 'A' },
+					{ value: 335, name: 'B' },
+					{ value: 310, name: 'C' },
+					{ value: 274, name: 'D' },
+					{ value: 235, name: 'E' }
+				]
+			}]
+		})
+		myChart3.setOption({
+			series: [{
+				name: '访问来源',
+				type: 'pie',
+				radius: '55%',
+				data: [
+					{ value: 200, name: '搜索引擎' },
+					{ value: 335, name: '直接访问' },
+					{ value: 310, name: '邮件营销' },
+					{ value: 274, name: '联盟广告' },
+					{ value: 235, name: '视频广告' }
+				]
+			}]
+		})
+		var option4 = {
+    backgroundColor: '#2c343c',
+
+    title: {
+        text: 'Customized Pie',
+        left: 'center',
+        top: 20,
+        textStyle: {
+            color: '#ccc'
+        }
+    },
+
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+
+    visualMap: {
+        show: false,
+        min: 80,
+        max: 600,
+        inRange: {
+            colorLightness: [0, 1]
+        }
+    },
+    series : [
+        {
+            name:'访问来源',
+            type:'pie',
+            radius : '55%',
+            center: ['50%', '50%'],
+            data:[
+                {value:335, name:'直接访问'},
+                {value:310, name:'邮件营销'},
+                {value:274, name:'联盟广告'},
+                {value:235, name:'视频广告'},
+                {value:400, name:'搜索引擎'}
+            ].sort(function (a, b) { return a.value - b.value}),
+            roseType: 'angle',
+            label: {
+                normal: {
+                    textStyle: {
+                        color: 'rgba(255, 255, 255, 0.3)'
+                    }
+                }
+            },
+            labelLine: {
+                normal: {
+                    lineStyle: {
+                        color: 'rgba(255, 255, 255, 0.3)'
+                    },
+                    smooth: 0.2,
+                    length: 10,
+                    length2: 20
+                }
+            },
+            itemStyle: {
+                normal: {
+                    color: '#c23531',
+                    shadowBlur: 200,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            },
+
+            animationType: 'scale',
+            animationEasing: 'elasticOut',
+            animationDelay: function (idx) {
+                return Math.random() * 200;
+            }
+        }
+    ]
+};
+
+		myChart1.setOption(option1);
+		myChart2.setOption(option2);
+		myChart3.setOption(option3);
+		myChart4.setOption(option4);
+	</script>
+
 </html>
